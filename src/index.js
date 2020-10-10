@@ -41,8 +41,7 @@ module.exports = function toReadable(number) {
         '600': 'six hundred',
         '700': 'seven hundred',
         '800': 'eight hundred',
-        '900': 'nine hundred',
-        '999': 'nine hundred ninety nine',
+        '900': 'nine hundred',        
         '1000': 'one thousand'
     };
     if (number >= 0 && number <= 20 || number == 100 || number == 1000) {
@@ -52,20 +51,20 @@ module.exports = function toReadable(number) {
         units = number - decim;
         decim = arrNum[decim];
         units = arrNum[units];
-        if (units == 'zero') {
-            translation = decim;
-        } else {
-            translation = decim + ' ' + units;
-        }
+            if (units == 'zero') {
+                translation = decim;
+            } else {
+                translation = decim + ' ' + units;
+            }
 
     } else if (number > 100 && number < 1000) {
         hundreds = Math.trunc(number / 100) * 100;
         decim = number - hundreds;
-        if (decim < 20) {
-            decim = (number - hundreds) / 10 * 10;
-        } else {
-            decim = Math.trunc((number - hundreds) / 10) * 10;
-        }
+            if (decim < 20) {
+                decim = (number - hundreds) / 10 * 10;
+            } else {
+                decim = Math.trunc((number - hundreds) / 10) * 10;
+            }
         units = number - hundreds - decim;
         hundreds = arrNum[hundreds];
         decim = arrNum[decim];
